@@ -6,6 +6,7 @@
     <title>MLBB Tournament Central</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/output.css">
 </head>
 <body class="bg-slate-900 text-white font-sans">
 
@@ -124,79 +125,6 @@
     </div>
 </div>
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-<script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-    createChat({
-        webhookUrl: 'https://adminf.app.n8n.cloud/webhook/2dfee693-4659-4d09-b578-b05f88d8dff6/chat',
-        webhookConfig: {
-            method: 'POST' 
-        },
-        title: 'Tanya Sayyid AI',
-        placeholder: 'Ketik pesan Anda...',
-        initialMessages: [
-            'Halo! Saya asisten AI Data Base Mobile Legend Farros. Ada yang bisa saya bantu?'
-        ],
-        showWelcomeScreen: true,
-    });
-</script>
-<script>
-    // Fungsi bantuan untuk menyembunyikan semua toast yang mungkin sedang terbuka
-    function hideAllToasts() {
-        const toasts = ['not-available-toast', 'closed-toast'];
-        toasts.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.classList.add('hidden', 'opacity-0');
-        });
-    }
-
-    function showNotAvailable() {
-        hideAllToasts(); 
-        
-        const toast = document.getElementById('not-available-toast');
-        
-        toast.style.transform = 'translate(-50%, -20px)';
-        toast.classList.remove('hidden', 'opacity-0');
-        
-        setTimeout(() => {
-            toast.style.transform = 'translate(-50%, 0)';
-        }, 10);
-        
-        setTimeout(() => {
-            closeNotAvailable();
-        }, 2500);
-    }
-
-    function closeNotAvailable() {
-        const toast = document.getElementById('not-available-toast');
-        if(!toast.classList.contains('hidden')) {
-            toast.classList.add('opacity-0');
-            setTimeout(() => toast.classList.add('hidden'), 500);
-        }
-    }
-
-    function showClosedNotification() {
-        hideAllToasts(); // Bersihkan yang lain dulu
-        
-        const toast = document.getElementById('closed-toast');
-        toast.classList.remove('hidden', 'opacity-0');
-        toast.style.transform = 'translate(-50%, -20px)';
-        
-        setTimeout(() => {
-            toast.style.transform = 'translate(-50%, 0)';
-        }, 10);
-
-        setTimeout(() => {
-            closeToast();
-        }, 1500);
-    }
-
-    function closeToast() {
-        const toast = document.getElementById('closed-toast');
-        if(!toast.classList.contains('hidden')) {
-            toast.classList.add('opacity-0');
-            setTimeout(() => toast.classList.add('hidden'), 500);
-        }
-    }
-</script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
