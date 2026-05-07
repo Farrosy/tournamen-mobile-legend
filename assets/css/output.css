@@ -554,6 +554,8 @@ video {
   display: none;
 }
 
+/* Paksa hidden tailwind tetap menang untuk elemen non-animasi */
+
 /* Navbar & Layout */
 
 .nav-glass {
@@ -571,6 +573,7 @@ video {
   --tw-backdrop-blur: blur(12px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-list {
@@ -604,6 +607,7 @@ video {
 }
 
 .btn-cta {
+  cursor: pointer;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
   background-color: rgb(6 182 212 / var(--tw-bg-opacity, 1));
@@ -734,6 +738,9 @@ video {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-shadow: 0 0 30px rgba(0,0,0,0.5);
+  --tw-shadow-colored: 0 0 30px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .badge-closed {
@@ -757,19 +764,29 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-/* Toasts */
+/* TOASTS - VERSI CLEAN (Hanya pakai class .show) */
 
 .toast-container {
   position: fixed;
   top: 6rem;
   left: 50%;
   z-index: 100;
-  display: none;
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 500ms;
+  transform: translate(-50%, -30px);
+  /* Posisi awal sedikit lebih atas */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block !important;
+  /* Agar transisi opacity & transform jalan */
+}
+
+.toast-container.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  /* Meluncur mulus ke posisi normal */
 }
 
 .toast-content {
@@ -1145,11 +1162,9 @@ video {
   transition-duration: 500ms;
 }
 
-/* --- Perbaikan N8N Chat --- */
+/* --- Base Fixes --- */
 
-/* Memastikan bulatan chat AI selalu berada di depan (tidak tertutup navbar) */
-
-/* Custom Animation */
+/* Custom Animation Hero */
 
 header img {
   animation: slowZoom 20s infinite alternate;
@@ -1173,6 +1188,10 @@ header img {
 .hover\:text-slate-900:hover {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity, 1));
+}
+
+.hover\:opacity-70:hover {
+  opacity: 0.7;
 }
 
 .group:hover .group-hover\:scale-110 {

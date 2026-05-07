@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- Perbaikan N8N Chat --- */
-/* Memastikan bulatan chat AI selalu berada di depan (tidak tertutup navbar) */
+/* --- Base Fixes --- */
 @layer base {
     .n8n-chat-widget {
         z-index: 9999 !important;
+    }
+    /* Paksa hidden tailwind tetap menang untuk elemen non-animasi */
+    .hidden {
+        display: none !important;
     }
 }
 
@@ -14,6 +17,7 @@
     /* Navbar & Layout */
     .nav-glass {
         @apply flex justify-between items-center px-10 py-6 bg-slate-800/50 backdrop-blur-md sticky top-0 z-50;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     .nav-list {
         @apply hidden md:flex gap-8 items-center text-sm uppercase tracking-widest;
@@ -22,7 +26,7 @@
         @apply hover:text-cyan-400 transition cursor-pointer;
     }
     .btn-cta {
-        @apply bg-cyan-500 px-6 py-2 rounded-full text-slate-900 font-bold hover:bg-cyan-300 transition;
+        @apply bg-cyan-500 px-6 py-2 rounded-full text-slate-900 font-bold hover:bg-cyan-300 transition cursor-pointer;
     }
 
     /* Hero Section */
@@ -44,7 +48,10 @@
 
     /* Tournament Cards */
     .card-tournament {
-        @apply max-w-md w-full bg-slate-800 rounded-2xl overflow-hidden hover:transform hover:scale-105 transition duration-300 border border-slate-700;
+        @apply max-w-md w-full bg-slate-800 rounded-2xl overflow-hidden transition duration-300 border border-slate-700;
+    }
+    .card-tournament:hover {
+        @apply scale-105 shadow-[0_0_30px_rgba(0,0,0,0.5)];
     }
     .card-image-zoom {
         @apply w-full h-full object-cover transition duration-500;
@@ -53,16 +60,30 @@
         @apply absolute top-4 left-4 z-10 bg-red-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg;
     }
 
-    /* Toasts */
+    /* TOASTS - VERSI CLEAN (Hanya pakai class .show) */
     .toast-container {
-        @apply hidden fixed top-24 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500;
+        @apply fixed top-24 left-1/2 z-[100];
+        transform: translate(-50%, -30px); /* Posisi awal sedikit lebih atas */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        display: block !important; /* Agar transisi opacity & transform jalan */
     }
+    
+    .toast-container.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translate(-50%, 0); /* Meluncur mulus ke posisi normal */
+    }
+
     .toast-content {
         @apply backdrop-blur-md border text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3;
     }
 }
 
-/* Custom Animation */
+/* Custom Animation Hero */
 header img {
     animation: slowZoom 20s infinite alternate;
 }
