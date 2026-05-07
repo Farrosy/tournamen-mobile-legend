@@ -4,127 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLBB Tournament Central</title>
+    <!-- Tailwind CSS (Dev Only) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icons & Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- N8N Chat Style -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <!-- Production CSS (Hasil Build) -->
     <link rel="stylesheet" href="assets/css/output.css">
 </head>
 <body class="bg-slate-900 text-white font-sans">
 
     <!-- Navbar -->
-    <nav class="flex justify-between items-center px-10 py-6 bg-slate-800/50 backdrop-blur-md sticky top-0 z-50">
+    <nav class="nav-glass">
         <h1 class="text-2xl font-bold tracking-tighter text-cyan-400">MLBB<span class="text-white">ARENA</span></h1>
-        <ul class="hidden md:flex gap-8 items-center text-sm uppercase tracking-widest">
-            <li><a href="#" class="hover:text-cyan-400 transition">Beranda</a></li>
-            <li><a href="javascript:void(0)" onclick="showNotAvailable()" class="hover:text-cyan-400 transition">Turnamen</a></li>
-            <li><a href="javascript:void(0)" onclick="showNotAvailable()" class="hover:text-cyan-400 transition">Jadwal</a></li>
-            <li><a href="javascript:void(0)" onclick="showClosedNotification()" class="bg-cyan-500 px-6 py-2 rounded-full text-slate-900 font-bold hover:bg-cyan-300 transition">Daftar Sekarang</a></li>
+        <ul class="nav-list">
+            <li><a href="#" class="nav-link">Beranda</a></li>
+            <li><a onclick="showNotAvailable()" class="nav-link">Turnamen</a></li>
+            <li><a onclick="showNotAvailable()" class="nav-link">Jadwal</a></li>
+            <li><a onclick="showClosedNotification()" class="btn-cta">Daftar Sekarang</a></li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+    <header class="hero-container">
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10"></div>
-        <!-- Ganti URL gambar dengan wallpaper MLBB yang keren -->
-        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="absolute inset-0 w-full h-full object-cover opacity-40" alt="MLBB Background">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1350&q=80" class="absolute inset-0 w-full h-full object-cover opacity-40" alt="MLBB Arena Background">
         
-        <div class="relative z-20 text-center px-4">
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-4 uppercase italic">Rise to the <span class="text-cyan-400">Legend</span></h2>
+        <div class="hero-content">
+            <h2 class="hero-title">Rise to the <span class="text-cyan-400">Legend</span></h2>
             <p class="text-gray-300 max-w-2xl mx-auto mb-8">Tunjukkan kemampuan tim Anda dan rebut total hadiah jutaan rupiah di turnamen MLBB terbesar musim ini.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <button onclick="showClosedNotification()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 px-8 py-4 rounded-lg font-bold text-lg transition shadow-[0_0_20px_rgba(34,211,238,0.4)]">
-                    IKUT TURNAMEN
-                </button>
-                <button onclick="showNotAvailable()" class="border border-white/30 hover:bg-white/10 px-8 py-4 rounded-lg font-bold text-lg transition">
-                    LIHAT BRACKET
-                </button>
+                <button onclick="showClosedNotification()" class="hero-btn-primary">IKUT TURNAMEN</button>
+                <button onclick="showNotAvailable()" class="hero-btn-outline">LIHAT BRACKET</button>
             </div>
         </div>
     </header>
 
-    <!-- Tournament Info Cards -->
+    <!-- Tournament Section -->
     <section class="max-w-6xl mx-auto py-20 px-6">
-        <h3 class="text-3xl font-bold mb-12 border-l-4 border-cyan-500 pl-4 text-center md:text-left">Turnamen Aktif</h3>
+        <h3 class="text-3xl font-bold mb-12 border-l-4 border-cyan-500 pl-4">Turnamen Aktif</h3>
         
-        <!-- Grid disesuaikan agar card berada di tengah jika hanya ada satu -->
         <div class="flex justify-center">
-            <!-- Card 1: Internal Cup (Menggunakan gambar dari Card 3 sebelumnya) -->
-            <div class="max-w-md w-full bg-slate-800 rounded-2xl overflow-hidden hover:transform hover:scale-105 transition duration-300 border border-slate-700 group">
+            <div class="card-tournament group">
                 <div class="h-48 overflow-hidden relative">
-                    <span class="absolute top-4 left-4 z-10 bg-red-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Closed</span>
-                    <!-- Gambar Trophy dari Card 3 sebelumnya -->
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Tournament 1">
+                    <span class="badge-closed">Closed</span>
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1350&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Internal Cup Vol. 5">
                 </div>
                 <div class="p-6">
-                    <h4 class="text-xl font-bold mb-2 text-white">Internal Cup Vol. 5</h4>
+                    <h4 class="text-xl font-bold mb-2">Internal Cup Vol. 5</h4>
                     <div class="flex items-center text-gray-400 text-sm mb-4 gap-4">
                         <span><i class="fas fa-calendar-alt text-cyan-400 mr-2"></i> 20 Mei 2026</span>
                         <span><i class="fas fa-users text-cyan-400 mr-2"></i> 32 Tim</span>
                     </div>
                     <div class="flex justify-between items-center pt-4 border-t border-slate-700">
                         <span class="text-cyan-400 font-bold text-lg">Rp 5.000.000</span>
-                        <button onclick="showClosedNotification()" class="text-sm font-semibold bg-slate-700 px-6 py-2 rounded-lg hover:bg-cyan-500 hover:text-slate-900 transition uppercase tracking-wider">Daftar</button>
+                        <button onclick="showClosedNotification()" class="text-sm font-semibold bg-slate-700 px-6 py-2 rounded-lg hover:bg-cyan-500 transition">DAFTAR</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Footer -->
-    <footer class="bg-slate-950 py-12 px-6 mt-12 border-t border-slate-800">
+    <footer class="bg-slate-950 py-12 px-6 border-t border-slate-800">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <!-- Brand & Deskripsi -->
             <div class="text-center md:text-left max-w-sm">
                 <h2 class="text-2xl font-bold tracking-tighter text-cyan-400 mb-3">MLBB<span class="text-white">ARENA</span></h2>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Platform penyedia turnamen Mobile Legends: Bang Bang terbaik. Bentuk timmu, susun strategi, dan jadilah penguasa Land of Dawn.
-                </p>
+                <p class="text-slate-400 text-sm">Platform penyedia turnamen Mobile Legends terbaik. Jadilah penguasa Land of Dawn.</p>
             </div>
-            
-            <!-- Social Media Links -->
             <div class="flex gap-4">
-                <a href="https://www.instagram.com/bukanfaros/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-slate-900 hover:scale-110 transition-all duration-300 shadow-lg" aria-label="Instagram">
-                    <i class="fab fa-instagram text-lg"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/sayyid-syuja-farrosy/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-slate-900 hover:scale-110 transition-all duration-300 shadow-lg" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in text-lg"></i>
-                </a>
-                <a href="https://github.com/Farrosy" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-slate-900 hover:scale-110 transition-all duration-300 shadow-lg" aria-label="GitHub">
-                    <i class="fab fa-github text-lg"></i>
-                </a>
+                <a href="https://github.com/Farrosy" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-cyan-500 hover:text-slate-900 transition"><i class="fab fa-github"></i></a>
             </div>
         </div>
-        
-        <!-- Copyright -->
-        <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-slate-800/50 text-center text-slate-500 text-sm">
-            <p>&copy; 2026 MLBB Arena. Dibuat oleh Sayyid Syuja Farrosy. Semua Hak Cipta Dilindungi.</p>
+        <div class="text-center text-slate-500 text-sm mt-8 border-t border-slate-800/50 pt-6">
+            <p>&copy; 2026 MLBB Arena. Dibuat oleh Sayyid Syuja Farrosy.</p>
         </div>
     </footer>
-<div id="closed-toast" class="hidden fixed top-24 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500">
-    <div class="bg-red-600/90 backdrop-blur-md border border-red-400 text-white px-6 py-4 rounded-xl shadow-[0_0_30px_rgba(220,38,38,0.5)] flex items-center gap-3">
-        <i class="fas fa-exclamation-triangle text-xl"></i>
-        <div>
-            <p class="font-bold">Tournament Telah Ditutup!</p>
-            <p class="text-xs text-red-100">Maaf, pendaftaran sudah mencapai batas maksimal atau waktu telah habis.</p>
+
+    <!-- Toasts -->
+    <div id="closed-toast" class="toast-container">
+        <div class="toast-content bg-red-600/90 border-red-400">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <p class="font-bold text-sm">Tournament Telah Ditutup!</p>
+                <p class="text-xs opacity-80">Maaf, pendaftaran sudah habis.</p>
+            </div>
+            <button onclick="closeToast()" class="ml-4"><i class="fas fa-times"></i></button>
         </div>
-        <button onclick="closeToast()" class="ml-4 hover:text-red-200">
-            <i class="fas fa-times"></i>
-        </button>
     </div>
-</div>
-<!-- Notification Fitur Belum Tersedia -->
-<div id="not-available-toast" class="hidden fixed top-24 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500">
-    <div class="bg-amber-500/90 backdrop-blur-md border border-amber-400 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3">
-        <i class="fas fa-info-circle text-xl"></i>
-        <div>
-            <p class="font-bold">Fitur Belum Tersedia</p>
-            <p class="text-xs">Mohon maaf, fitur ini masih dalam pengembangan. Coba lagi nanti!</p>
+
+    <div id="not-available-toast" class="toast-container">
+        <div class="toast-content bg-amber-500/90 border-amber-400">
+            <i class="fas fa-info-circle"></i>
+            <div>
+                <p class="font-bold text-sm">Fitur Belum Tersedia</p>
+                <p class="text-xs opacity-80">Mohon maaf, fitur ini masih dalam pengembangan.</p>
+            </div>
+            <button onclick="closeNotAvailable()" class="ml-4"><i class="fas fa-times"></i></button>
         </div>
-        <!-- Tambahkan Tombol Close di bawah ini -->
-        <button onclick="closeNotAvailable()" class="ml-4 hover:text-amber-800 transition">
-            <i class="fas fa-times"></i>
-        </button>
     </div>
-</div>
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-<script src="assets/js/script.js"></script>
+
+    <!-- Scripts -->
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+        createChat({
+            webhookUrl: 'https://adminf.app.n8n.cloud/webhook/2dfee693-4659-4d09-b578-b05f88d8dff6/chat',
+            webhookConfig: { method: 'POST' },
+            title: 'Tanya Sayyid AI',
+            placeholder: 'Ketik pesan Anda...',
+            initialMessages: ['Halo! Saya asisten AI MLBB Arena. Ada yang bisa saya bantu?'],
+            showWelcomeScreen: true,
+        });
+    </script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
