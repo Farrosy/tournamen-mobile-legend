@@ -56,7 +56,7 @@ Make sure you have **Node.js** and **npm** installed on your system.
 
 1.  **Clone the Repository**:
     ```bash
-    git clone [https://github.com/Farrosy/tournamen-mobile-legend.git](https://github.com/Farrosy/tournamen-mobile-legend.git)
+    git clone https://github.com/Farrosy/tournamen-mobile-legend.git
     cd tournamen-mobile-legend
     ```
 
