@@ -1145,6 +1145,10 @@ video {
   transition-duration: 500ms;
 }
 
+/* --- Perbaikan N8N Chat --- */
+
+/* Memastikan bulatan chat AI selalu berada di depan (tidak tertutup navbar) */
+
 /* Custom Animation */
 
 header img {

@@ -1,18 +1,22 @@
 {
-  "name": "portofolio-sayyid-syuja-farrosy",
+  "name": "tournamen-mobile-legends",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Platform penyedia turnamen Mobile Legends: Bang Bang",
+  "main": "index.html",
   "scripts": {
+    "dev": "tailwindcss -i ./assets/css/style.css -o ./assets/css/output.css --watch",
+    "build": "tailwindcss -i ./assets/css/style.css -o ./assets/css/output.css --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "mlbb",
+    "tournament",
+    "esports",
+    "tailwind"
+  ],
+  "author": "Sayyid Syuja Farrosy",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "tailwindcss": "^3.4.19"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.13"
   }
 }

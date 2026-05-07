@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --- Perbaikan N8N Chat --- */
+/* Memastikan bulatan chat AI selalu berada di depan (tidak tertutup navbar) */
+@layer base {
+    .n8n-chat-widget {
+        z-index: 9999 !important;
+    }
+}
+
 @layer components {
     /* Navbar & Layout */
     .nav-glass {
@@ -39,7 +47,7 @@
         @apply max-w-md w-full bg-slate-800 rounded-2xl overflow-hidden hover:transform hover:scale-105 transition duration-300 border border-slate-700;
     }
     .card-image-zoom {
-    @apply w-full h-full object-cover transition duration-500;
+        @apply w-full h-full object-cover transition duration-500;
     }
     .badge-closed {
         @apply absolute top-4 left-4 z-10 bg-red-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg;
